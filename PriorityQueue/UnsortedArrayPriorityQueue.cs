@@ -15,6 +15,11 @@ namespace PriorityQueue
             count = 0;
         }
 
+        public bool IsEmpty()
+        {
+            return count == 0;
+        }
+        // Exeption handeling for empty array
         public T Head()
         {
             if (IsEmpty())
@@ -24,6 +29,7 @@ namespace PriorityQueue
             return storage[FindHighestPriorityIndex()].Item;
         }
 
+        // Exeption handeling for full aray
         public void Add(T item, int priority)
         {
             if (count >= capacity)
@@ -33,6 +39,7 @@ namespace PriorityQueue
             storage[count++] = new PriorityItem<T>(item, priority);
         }
 
+        // Removes top priority from array using my findhigheset priority index function to move that priority to the end of the array to remove it 
         public void Remove()
         {
             if (IsEmpty())
@@ -47,11 +54,8 @@ namespace PriorityQueue
             count--;
         }
 
-        public bool IsEmpty()
-        {
-            return count == 0;
-        }
-
+       
+        //this function is just used to display the array to the user when show array is clicked 
         public override string ToString()
         {
             if (IsEmpty())
@@ -72,6 +76,7 @@ namespace PriorityQueue
             return result;
         }
 
+        // loops throught the size of the array and checks if the priority is higher then the current one and replaces it if it is to calculate the highest priority 
         private int FindHighestPriorityIndex()
         {
             int highestPriorityIndex = 0;

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using PriorityQueue;   // Ensure it references your queue classes
+
 
 namespace PriorityQueue
 {
@@ -26,9 +28,22 @@ namespace PriorityQueue
             if (CB_Implementation.SelectedIndex == 0)
             {
                 InitSortedArrayQueue();
-            } if (CB_Implementation.SelectedIndex == 1)
+            }
+            else if (CB_Implementation.SelectedIndex == 1)
             {
                 InitUnsortedArrayQueue();
+            }
+            else if (CB_Implementation.SelectedIndex == 2)
+            {
+                InitUnsortedLinkedPriorityQueue();
+            }
+            else if (CB_Implementation.SelectedIndex == 3)
+            {
+                InitSortedLinkedPriorityQueue();
+            }
+            else if (CB_Implementation.SelectedIndex == 4)
+            {
+                InitHeapPriorityQueue();
             }
         }
         
@@ -43,6 +58,25 @@ namespace PriorityQueue
             queue = new UnsortedArrayPriorityQueue<Person>(8);
             Lbl_Output.Text = "New unsorted array priority queue created";
         }
+
+        private void InitUnsortedLinkedPriorityQueue()
+        {
+            queue = new UnsortedLinkedPriorityQueue<Person>(8);
+            Lbl_Output.Text = "New unsorted linked priority queue created";
+        }
+
+        private void InitSortedLinkedPriorityQueue()
+        {
+            queue = new SortedLinkedPriorityQueue<Person>(8);
+            Lbl_Output.Text = "New sorted linked priority queue created";
+        }
+
+        private void InitHeapPriorityQueue()
+        {
+            queue = new HeapPriorityQueue<Person>(8);
+            Lbl_Output.Text = "New heap priority queue created";
+        }
+
 
         private void Btn_AddQueue_Click(object sender, System.EventArgs e)
         {
